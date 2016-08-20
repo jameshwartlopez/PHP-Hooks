@@ -43,26 +43,29 @@ if (!class_exists('Hooks')){
        * @since 0.1
        * @var array
        */
-      var $filters = array();
+      public $filters = array();
+
       /**
        * $merged_filters
        * @var array
        */
-      var $merged_filters = array();
+      public $merged_filters = array();
+
       /**
        * $actions
        * @var array
        */
-      var $actions = array();
+      public $actions = array();
+
       /**
        * $current_filter  holds the name of the current filter
        * @access public
        * @since 0.1
        * @var array
        */
-      var $current_filter = array();
+      public $current_filter = array();
 
-      protected static function getInstance()
+      public static function getInstance()
       {
           if ( is_null(self::$instance) ) {
               self::$instance = new self();
@@ -85,18 +88,18 @@ if (!class_exists('Hooks')){
       {
       }
 
-    /**
-     * __construct class constructor
-     * @access public
-     * @since 0.1
-     */
-    public function __construct($args = null)
-    {
-      $this->filters = array();
-      $this->merged_filters = array();
-      $this->actions = array();
-      $this->current_filter = array();
-    }
+      /**
+       * __construct class constructor
+       * @access public
+       * @since 0.1
+       */
+      public function __construct($args = null)
+      {
+          $this->filters = array();
+          $this->merged_filters = array();
+          $this->actions = array();
+          $this->current_filter = array();
+      }
 
     /**
      * FILTERS
