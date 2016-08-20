@@ -30,31 +30,61 @@ if (!class_exists('Hooks')){
   */
   class Hooks
   {
-    /**
-     * $filters holds list of hooks
-     * @access public
-     * @since 0.1
-     * @var array
-     */
-    var $filters = array();
-    /**
-     * $merged_filters
-     * @var array
-     */
-    var $merged_filters = array();
-    /**
-     * $actions 
-     * @var array
-     */
-    var $actions = array();
-    /**
-     * $current_filter  holds the name of the current filter
-     * @access public
-     * @since 0.1
-     * @var array
-     */
-    var $current_filter = array();
-    
+      /**
+       * The single instance of the class
+       *
+       * @var Hooks
+       */
+      private static $instance = null;
+
+      /**
+       * $filters holds list of hooks
+       * @access public
+       * @since 0.1
+       * @var array
+       */
+      var $filters = array();
+      /**
+       * $merged_filters
+       * @var array
+       */
+      var $merged_filters = array();
+      /**
+       * $actions
+       * @var array
+       */
+      var $actions = array();
+      /**
+       * $current_filter  holds the name of the current filter
+       * @access public
+       * @since 0.1
+       * @var array
+       */
+      var $current_filter = array();
+
+      protected static function getInstance()
+      {
+          if ( is_null(self::$instance) ) {
+              self::$instance = new self();
+          }
+
+          return self::$instance;
+      }
+
+      /**
+       * Cloning is forbidden
+       */
+      private function __clone()
+      {
+      }
+
+      /**
+       * Unserializing instances of this class is forbidden.
+       */
+      private function __wakeup()
+      {
+      }
+
     /**
      * __construct class constructor
      * @access public
